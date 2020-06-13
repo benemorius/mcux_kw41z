@@ -65,7 +65,7 @@ static uint32_t DMAMUX_GetInstance(DMAMUX_Type *base)
     uint32_t instance;
 
     /* Find the instance index from base address mappings. */
-    for (instance = 0; instance < ARRAY_SIZE(s_dmamuxBases); instance++)
+    for (instance = 0; instance < _ARRAY_SIZE(s_dmamuxBases); instance++)
     {
         if (s_dmamuxBases[instance] == base)
         {
@@ -73,7 +73,7 @@ static uint32_t DMAMUX_GetInstance(DMAMUX_Type *base)
         }
     }
 
-    assert(instance < ARRAY_SIZE(s_dmamuxBases));
+    assert(instance < _ARRAY_SIZE(s_dmamuxBases));
 
     return instance;
 }

@@ -137,7 +137,7 @@ uint32_t LPUART_GetInstance(LPUART_Type *base)
     uint32_t instance;
 
     /* Find the instance index from base address mappings. */
-    for (instance = 0; instance < ARRAY_SIZE(s_lpuartBases); instance++)
+    for (instance = 0; instance < _ARRAY_SIZE(s_lpuartBases); instance++)
     {
         if (s_lpuartBases[instance] == base)
         {
@@ -145,7 +145,7 @@ uint32_t LPUART_GetInstance(LPUART_Type *base)
         }
     }
 
-    assert(instance < ARRAY_SIZE(s_lpuartBases));
+    assert(instance < _ARRAY_SIZE(s_lpuartBases));
 
     return instance;
 }

@@ -64,7 +64,7 @@ static uint32_t VREF_GetInstance(VREF_Type *base)
     uint32_t instance;
 
     /* Find the instance index from base address mappings. */
-    for (instance = 0; instance < ARRAY_SIZE(s_vrefBases); instance++)
+    for (instance = 0; instance < _ARRAY_SIZE(s_vrefBases); instance++)
     {
         if (s_vrefBases[instance] == base)
         {
@@ -72,7 +72,7 @@ static uint32_t VREF_GetInstance(VREF_Type *base)
         }
     }
 
-    assert(instance < ARRAY_SIZE(s_vrefBases));
+    assert(instance < _ARRAY_SIZE(s_vrefBases));
 
     return instance;
 }

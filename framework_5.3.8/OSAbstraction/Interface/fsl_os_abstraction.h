@@ -103,6 +103,8 @@ typedef enum osaStatus_tag
     #define USE_RTOS 1
 #elif defined (FSL_RTOS_UCOSIII)
     #define USE_RTOS 1
+#elif defined (FSL_RTOS_RIOT)
+    #define USE_RTOS 1
 #else
     #define USE_RTOS 0
 #endif

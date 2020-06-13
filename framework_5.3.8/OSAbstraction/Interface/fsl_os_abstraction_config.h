@@ -13,10 +13,10 @@
 #define _FSL_OS_ABSTRACTION_CONFIG_H_
 
 #ifndef osNumberOfSemaphores
-#define osNumberOfSemaphores 5
+#define osNumberOfSemaphores 1
 #endif
 #ifndef osNumberOfMutexes
-#define osNumberOfMutexes    5
+#define osNumberOfMutexes    1
 #endif
 #ifndef osNumberOfMessageQs
 #define osNumberOfMessageQs  0

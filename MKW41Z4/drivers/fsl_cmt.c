@@ -82,7 +82,7 @@ static uint32_t CMT_GetInstance(CMT_Type *base)
     uint32_t instance;
 
     /* Find the instance index from base address mappings. */
-    for (instance = 0; instance < ARRAY_SIZE(s_cmtBases); instance++)
+    for (instance = 0; instance < _ARRAY_SIZE(s_cmtBases); instance++)
     {
         if (s_cmtBases[instance] == base)
         {
@@ -90,7 +90,7 @@ static uint32_t CMT_GetInstance(CMT_Type *base)
         }
     }
 
-    assert(instance < ARRAY_SIZE(s_cmtBases));
+    assert(instance < _ARRAY_SIZE(s_cmtBases));
 
     return instance;
 }

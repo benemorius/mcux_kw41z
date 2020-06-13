@@ -58,7 +58,7 @@ static uint32_t CMP_GetInstance(CMP_Type *base)
     uint32_t instance;
 
     /* Find the instance index from base address mappings. */
-    for (instance = 0; instance < ARRAY_SIZE(s_cmpBases); instance++)
+    for (instance = 0; instance < _ARRAY_SIZE(s_cmpBases); instance++)
     {
         if (s_cmpBases[instance] == base)
         {
@@ -66,7 +66,7 @@ static uint32_t CMP_GetInstance(CMP_Type *base)
         }
     }
 
-    assert(instance < ARRAY_SIZE(s_cmpBases));
+    assert(instance < _ARRAY_SIZE(s_cmpBases));
 
     return instance;
 }
