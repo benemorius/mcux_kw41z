@@ -54,11 +54,11 @@
 
 /* Interface configuration */
 #ifndef gHcitInterfaceType_d
-#define gHcitInterfaceType_d        (APP_SERIAL_INTERFACE_TYPE)
+#define gHcitInterfaceType_d        (gSerialMgrLpuart_c)
 #endif
 
 #ifndef gHcitInterfaceNumber_d
-#define gHcitInterfaceNumber_d      (APP_SERIAL_INTERFACE_INSTANCE)
+#define gHcitInterfaceNumber_d      (0)
 #endif
 
 #ifndef gHcitInterfaceSpeed_d

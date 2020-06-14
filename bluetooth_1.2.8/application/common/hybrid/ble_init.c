@@ -22,7 +22,7 @@
 #include "ble_host_task_config.h"
 #include "ble_controller_task_config.h"
 #include "hci_transport.h"
-#include "board.h"
+#include "mcux_board.h"
 
 #if !gUseHciTransportDownward_d
 #include "controller_interface.h"

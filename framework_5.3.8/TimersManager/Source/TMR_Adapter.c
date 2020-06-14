@@ -12,7 +12,7 @@
 #include "fsl_device_registers.h"
 #include "fsl_os_abstraction.h"
 #include "fsl_common.h"
-#include "board.h"
+#include "mcux_board.h"
 
 #if FSL_FEATURE_SOC_FTM_COUNT
   #include "fsl_ftm.h"

@@ -35,7 +35,7 @@
 #endif
 
 /* KSDK */
-#include "board.h"
+#include "mcux_board.h"
 
 /* Bluetooth Low Energy */
 #include "gatt_interface.h"
@@ -382,7 +382,7 @@ void main_task(uint32_t param)
 #endif    
        
         /* Initialize peripheral drivers specific to the application */
-        BleApp_Init();
+//         BleApp_Init();
             
         /* Create application event */
         mAppEvent = OSA_EventCreate(TRUE);
@@ -977,8 +977,9 @@ static void App_HandleHostMessageInput(appMsgFromHost_t* pMsg)
         {
             if (pfGenericCallback)
                 pfGenericCallback(&pMsg->msgData.genericMsg);
-            else
-                BleApp_GenericCallback(&pMsg->msgData.genericMsg);
+            else {
+//                 BleApp_GenericCallback(&pMsg->msgData.genericMsg);
+            }
             break;
         }
         case gAppGapAdvertisementMsg_c:

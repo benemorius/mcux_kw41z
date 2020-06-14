@@ -18,7 +18,7 @@
 #include "pin_mux.h"
 #include "Panic.h"
 #include "fsl_common.h"
-#include "board.h"
+#include "mcux_board.h"
 #include "fsl_os_abstraction.h"
 
 #if FSL_FEATURE_SOC_DSPI_COUNT

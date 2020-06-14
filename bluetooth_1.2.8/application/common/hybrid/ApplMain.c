@@ -35,7 +35,7 @@
 #endif
 
 /* KSDK */
-#include "board.h"
+#include "mcux_board.h"
 #include "fsl_device_registers.h"
 
 /* 802.15.4 */

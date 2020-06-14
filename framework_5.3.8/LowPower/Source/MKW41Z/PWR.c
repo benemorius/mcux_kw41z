@@ -21,7 +21,7 @@
 #include "TimersManager.h"
 #include "fsl_device_registers.h"
 #include "fsl_os_abstraction.h"
-#include "board.h"
+#include "mcux_board.h"
 #include "clock_config.h"
 #if (cPWR_BLE_LL_Enable)
 #include "PWR_BLE.h"

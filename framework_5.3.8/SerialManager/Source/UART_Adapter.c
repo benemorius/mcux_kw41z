@@ -15,7 +15,7 @@
 #include "fsl_os_abstraction.h"
 #include "UART_Adapter.h"
 #include "pin_mux.h"
-#include "board.h"
+#include "mcux_board.h"
 
 #if FSL_FEATURE_SOC_UART_COUNT
 #include "fsl_uart.h"

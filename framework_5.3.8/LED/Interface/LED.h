@@ -14,7 +14,7 @@
 #define _LED_INTERFACE_H_
 
 #include "EmbeddedTypes.h"
-#include "board.h"
+#include "mcux_board.h"
 
 #ifndef gLEDSupported_d
 #define gLEDSupported_d                 TRUE

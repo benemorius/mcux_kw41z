@@ -16,7 +16,7 @@
  *****************************************************************************/
 #include "EmbeddedTypes.h"
 #include "fsl_device_registers.h"
-#include "board.h"
+#include "mcux_board.h"
 #include "PWRLib.h"
 #include "PWR_Configuration.h"
 #include "TimersManager.h"

@@ -36,7 +36,7 @@
 #include "PhyTypes.h"
 #include "Phy.h"
 
-#include "board.h"
+#include "mcux_board.h"
 
 #ifdef gDCDC_Enabled_d
 #include "DCDC.h"

@@ -29,7 +29,7 @@
 #include "gatt_database.h"
 #include "gatt_types.h"
 #include "gap_types.h"
-#include "board.h"
+#include "mcux_board.h"
 
 #if gGattDbDynamic_d
 #include "gatt_db_dynamic.h"

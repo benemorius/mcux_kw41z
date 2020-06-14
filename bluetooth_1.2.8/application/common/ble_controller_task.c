@@ -26,7 +26,7 @@
 #include "controller_interface.h"
 #include "Flash_Adapter.h"
 #include "SecLib.h"
-#include "board.h"
+#include "mcux_board.h"
 
 #if gMWS_Enabled_d || gMWS_UseCoexistence_d
 #include "MWS.h"

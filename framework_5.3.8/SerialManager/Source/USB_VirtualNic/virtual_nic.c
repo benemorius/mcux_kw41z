@@ -8,7 +8,7 @@
 ********************************************************************************** */
 
 #include "fsl_device_registers.h"
-#include "board.h"
+#include "mcux_board.h"
 #include "fsl_debug_console.h"
 #include <stdio.h>
 #include <stdlib.h>

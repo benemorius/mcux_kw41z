@@ -21,6 +21,11 @@
 
 #include "ble_general.h"
 #include "hci_transport.h"
+#include "od.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /************************************************************************************
 *************************************************************************************
@@ -100,7 +105,7 @@ static bool_t   mHcitInit = FALSE;
 static uint8_t  gHcitSerMgrIf;
 
 static hcitComm_t mHcitData;
-static hciTransportInterface_t  mTransportInterface;
+hciTransportInterface_t  mTransportInterface;
 
 static detectState_t  mPacketDetectStep;
 
@@ -110,7 +115,7 @@ static hcitPacket_t mHcitPacketRaw;
 * Private functions prototypes
 *************************************************************************************
 ************************************************************************************/
-static void Hcit_RxCallBack(void *pData);
+void Hcit_RxCallBack(void *pData);
 
 /************************************************************************************
 *************************************************************************************
@@ -151,7 +156,7 @@ extern bleResult_t Ble_HciRecv
 bleResult_t Hcit_Init( hcitConfigStruct_t* hcitConfigStruct )
 {
     bleResult_t result = gHciSuccess_c;
-    serialStatus_t serialStatus = gSerial_Success_c;
+//     serialStatus_t serialStatus = gSerial_Success_c;
 
     if( mHcitInit == FALSE )
     {
@@ -166,24 +171,24 @@ bleResult_t Hcit_Init( hcitConfigStruct_t* hcitConfigStruct )
     
         /* Initialize HCI Transport interface */
         mTransportInterface = hcitConfigStruct->transportInterface;
-        
-        SerialManager_Init();
-            
-        /* Initialize HCI Transport */
-        serialStatus = Serial_InitInterface(
-            &gHcitSerMgrIf,
-            hcitConfigStruct->interfaceType,
-            hcitConfigStruct->interfaceChannel );
-        
-        if (serialStatus != gSerial_Success_c)
-        {
-            return gHciTransportError_c;
-        }
 
-        Serial_SetBaudRate(gHcitSerMgrIf, hcitConfigStruct->interfaceBaudrate);
-
-        /* Install Controller Events Callback handler */
-        Serial_SetRxCallBack(gHcitSerMgrIf, Hcit_RxCallBack, NULL);
+//         SerialManager_Init();
+//
+//         /* Initialize HCI Transport */
+//         serialStatus = Serial_InitInterface(
+//             &gHcitSerMgrIf,
+//             hcitConfigStruct->interfaceType,
+//             hcitConfigStruct->interfaceChannel );
+//
+//         if (serialStatus != gSerial_Success_c)
+//         {
+//             return gHciTransportError_c;
+//         }
+//
+//         Serial_SetBaudRate(gHcitSerMgrIf, hcitConfigStruct->interfaceBaudrate);
+//
+//         /* Install Controller Events Callback handler */
+//         Serial_SetRxCallBack(gHcitSerMgrIf, Hcit_RxCallBack, NULL);
 
         /* Flag initialization on module */
         mHcitInit = TRUE;
@@ -211,6 +216,13 @@ bleResult_t Hcit_Init( hcitConfigStruct_t* hcitConfigStruct )
 * \remarks 
 *
 ********************************************************************************** */
+
+extern int (*ble_hci_ram_rx_cmd_hs_cb)(uint8_t*, void*);
+extern void *ble_hci_ram_rx_cmd_hs_arg;
+
+extern int _ble_hci_ram_rx_cmd_hs_cb(uint8_t *data, uint16_t len);
+extern int _ble_hci_ram_rx_acl_hs_cb(uint8_t *data, uint16_t len);
+
 bleResult_t Hcit_SendPacket
     (
         hciPacketType_t packetType,
@@ -219,20 +231,12 @@ bleResult_t Hcit_SendPacket
     )
 {
     bleResult_t result = gBleSuccess_c;
-    
-    serialStatus_t status = 
-        Serial_AsyncWrite(gHcitSerMgrIf, (uint8_t*)(&packetType), 1, NULL, NULL );
-    
-    if(gSerial_Success_c != status)
-    {
-        result = gHciTransportError_c;
-    }
-    
-    status = Serial_SyncWrite(gHcitSerMgrIf, (uint8_t*)pPacket, packetSize);
-    
-    if(gSerial_Success_c != status)
-    {
-        result = gHciTransportError_c;
+
+    if (packetType == 0x4) { /* CMD */
+        _ble_hci_ram_rx_cmd_hs_cb(pPacket, packetSize);
+
+    } else if (packetType == 0x2) { /* ACL */
+        _ble_hci_ram_rx_acl_hs_cb(pPacket, packetSize);
     }
 
     return result;
@@ -300,7 +304,7 @@ static inline void Hcit_SendMessage(void)
     mPacketDetectStep = mDetectMarker_c;  
 }
 
-static void Hcit_RxCallBack(void *pData) 
+void Hcit_RxCallBack(void *pData)
 {
     uint8_t         recvChar;
     uint16_t        count;

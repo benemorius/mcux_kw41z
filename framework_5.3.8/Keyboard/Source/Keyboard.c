@@ -16,7 +16,7 @@
 #include "TimersManager.h"
 #include "GPIO_Adapter.h"
 #include "gpio_pins.h"
-#include "board.h"
+#include "mcux_board.h"
 #include "pin_mux.h"
 
 #include "fsl_os_abstraction.h"

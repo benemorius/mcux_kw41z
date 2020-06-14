@@ -13,7 +13,7 @@
 #include "fsl_adc16.h"
 #include "TimersManager.h"
 #include "fsl_os_abstraction.h"
-#include "board.h"
+#include "mcux_board.h"
 /*****************************************************************************
 ******************************************************************************
 * Private type definitions

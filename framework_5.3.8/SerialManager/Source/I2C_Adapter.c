@@ -12,7 +12,7 @@
 #include "fsl_device_registers.h"
 #include "fsl_os_abstraction.h"
 #include "fsl_common.h"
-#include "board.h"
+#include "mcux_board.h"
 #include "fsl_i2c.h"
 #include "I2C_Adapter.h"
 #include "pin_mux.h"

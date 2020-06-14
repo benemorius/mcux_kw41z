@@ -19,7 +19,7 @@
 #include "FunctionLib.h"
 #include "SerialManager.h"
 #include "MemManager.h"
-#include "board.h"
+#include "mcux_board.h"
 
 #if SHELL_ENABLED
 /************************************************************************************

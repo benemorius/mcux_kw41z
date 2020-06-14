@@ -25,7 +25,7 @@
 #include "ble_conn_manager.h"
 #include "ble_config.h"
 
-#include "board.h"
+#include "mcux_board.h"
 #include "MemManager.h"
 #include "SecLib.h"
 
